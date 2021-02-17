@@ -1,10 +1,12 @@
 import React from 'react'
-
-import { ExampleComponent } from 'react-expandable-table-cell'
-import 'react-expandable-table-cell/dist/index.css'
+import Table from './Table.jsx'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <div>
+      <Table />
+    </div>
+  )
 }
 
 export default App

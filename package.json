@@ -1,16 +1,27 @@
 {
   "name": "react-expandable-table-cell",
   "version": "1.0.0",
-  "description": "Made with create-react-library",
+  "description": "React table cell that allows you to easily edit cells",
   "author": "shawnscoding",
   "license": "MIT",
-  "repository": "shawnscoding/react-expandable-table-cell",
+  "repository": "https://github.com/shawnscoding/react-expandable-table-cell",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "react",
+    "react expandable input",
+    "react expandable textarea",
+    "react table",
+    "react expandable table cell",
+    "table expandable cell",
+    "react expandable cell",
+    "react grid cell",
+    "react expandable grid cell"
+  ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",

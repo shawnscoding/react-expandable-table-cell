@@ -1,0 +1,139 @@
+.global {
+  box-sizing: border-box;
+  word-break: break-all;
+}
+
+.expandable-label {
+  align-items: stretch;
+  display: inline-grid;
+  position: relative;
+  vertical-align: top;
+  -webkit-align-items: stretch;
+  -moz-box-align: stretch;
+}
+.expandable-label--focus {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* basis */
+  align-items: stretch;
+  display: inline-grid;
+  vertical-align: top;
+  -webkit-align-items: stretch;
+  -moz-box-align: stretch;
+  background-color: inherit;
+  max-width: 500px;
+  position: fixed;
+  top: 58px;
+  left: 587px;
+  z-index: 100;
+  border: 2px solid #1d63d4;
+}
+
+.expandable-label--edit {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* basis */
+  align-items: stretch;
+  display: inline-grid;
+  vertical-align: top;
+  -webkit-align-items: stretch;
+  -moz-box-align: stretch;
+  max-width: 300px;
+  position: fixed;
+  top: 58px;
+  word-break: break-all;
+  left: 587px;
+  z-index: 100;
+  background-color: inherit;
+  border: 2px solid #1d63d4;
+}
+
+.expandable-label--edit::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* basis */
+  grid-area: 2/1;
+  padding: 8px 10px 1px;
+  overflow: hidden;
+  width: auto;
+  min-width: 1em;
+  font: inherit;
+  margin: 0;
+  resize: none;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  word-break: break-all;
+
+  content: attr(data-value) ' ';
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+
+.textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* basis */
+  overflow: hidden;
+  width: auto;
+  padding: 8px 10px 0px;
+  min-width: 1em;
+  grid-area: 2/1;
+  font: inherit;
+  resize: none;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+.textarea:focus {
+  border: 0;
+  outline: 0;
+}
+
+.textarea--selected {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* basis */
+  overflow: hidden;
+  width: auto;
+  padding: 7px 9px 0px;
+  min-width: 1em;
+  grid-area: 2/1;
+  font: inherit;
+  resize: none;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
