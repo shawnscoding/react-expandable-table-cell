@@ -7,10 +7,12 @@ const ExpandableCellComponent = ({
   onBlur,
   onChange,
   columnId,
-  editOnOneClick
+  editOnOneClick,
+  maxWidth,
+  maxHeight
 }) => {
   const [value, setValue] = React.useState(initialValue)
-  const [mode, setMode] = React.useState(null)
+  const [mode, setMode] = React.useState('default')
 
   const [styleState, setStyle] = React.useState({})
 
@@ -66,46 +68,54 @@ const ExpandableCellComponent = ({
   }
   const setEditMode = () => {
     setMode('edit')
+
     const x = tdRef.current.getBoundingClientRect().x
     const y = tdRef.current.getBoundingClientRect().y
 
     setStyle({
       left: x,
-      top: y
+      top: y,
+      maxWidth: maxWidth !== null ? maxWidth : 'none',
+      maxHeight: maxHeight !== null ? maxHeight : 'none'
     })
   }
 
   const tdRef = React.useRef(null)
   return (
     <td role='cell' className={styles.global} ref={tdRef}>
-      <label
-        data-value={mode === 'edit' ? value : ''}
-        className={
-          mode === 'focus'
-            ? styles['expandable-cell--focus']
-            : mode === 'edit'
-            ? styles['expandable-cell--edit']
-            : styles['expandable-cell']
-        }
-        style={styleState}
-      >
-        <textarea
-          type=''
-          onDoubleClick={onDoubleClick}
-          readOnly={mode !== 'edit'}
-          onFocus={onFocus}
-          value={value}
+      {mode === '' ? (
+        <span>{value}</span>
+      ) : (
+        <label
+          data-value={mode === 'edit' ? value : ''}
           className={
             mode === 'focus'
-              ? styles['textarea--selected']
+              ? styles['expandable-cell--focus']
               : mode === 'edit'
-              ? styles['textarea--selected']
-              : styles.textarea
+              ? styles['expandable-cell--edit']
+              : styles['expandable-cell']
           }
-          onChange={_onChange}
-          onBlur={_onBlur}
-        />
-      </label>
+          style={styleState}
+        >
+          <textarea
+            style={maxHeight !== undefined ? { maxHeight: maxHeight } : {}}
+            type=''
+            onDoubleClick={onDoubleClick}
+            readOnly={mode !== 'edit'}
+            onFocus={onFocus}
+            value={value}
+            className={
+              mode === 'focus'
+                ? styles['textarea--focus']
+                : mode === 'edit'
+                ? styles['textarea--edit']
+                : styles.textarea
+            }
+            onChange={_onChange}
+            onBlur={_onBlur}
+          />
+        </label>
+      )}
     </td>
   )
 }
@@ -113,7 +123,9 @@ const ExpandableCellComponent = ({
 ExpandableCellComponent.defaultProps = {
   onBlur: undefined,
   onChange: undefined,
-  editOnOneClick: false
+  editOnOneClick: false,
+  maxWidth: null,
+  maxHeight: null
 }
 
 export default ExpandableCellComponent

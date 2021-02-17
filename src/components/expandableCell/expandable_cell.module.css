@@ -48,7 +48,6 @@
   vertical-align: top;
   -webkit-align-items: stretch;
   -moz-box-align: stretch;
-  max-width: 300px;
   position: fixed;
   top: 58px;
   word-break: break-all;
@@ -89,7 +88,6 @@
 
 .textarea {
   margin: 0;
-  padding: 0;
   border: 0;
   outline: 0;
   -webkit-box-sizing: border-box;
@@ -98,7 +96,7 @@
   /* basis */
   overflow: hidden;
   width: auto;
-  padding: 8px 10px 0px;
+  padding: 10px 6px 0;
   min-width: 1em;
   grid-area: 2/1;
   font: inherit;
@@ -107,12 +105,14 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 
-.textarea--selected {
+.textarea--focus {
   margin: 0;
-  padding: 0;
   border: 0;
   outline: 0;
   -webkit-box-sizing: border-box;
@@ -121,7 +121,7 @@
   /* basis */
   overflow: hidden;
   width: auto;
-  padding: 7px 9px 0px;
+  padding: 9px 5px 0;
   min-width: 1em;
   grid-area: 2/1;
   font: inherit;
@@ -130,10 +130,39 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 
-.textarea--selected:focus {
+.textarea--focus:focus {
+  border: 0;
+  outline: 0;
+}
+
+.textarea--edit {
+  margin: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* basis */
+  overflow: hidden;
+  width: auto;
+  padding: 9px 5px 0;
+  min-width: 1em;
+  grid-area: 2/1;
+  font: inherit;
+  resize: none;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.textarea--edit:focus {
   border: 0;
   outline: 0;
 }
