@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.css'
 import './index.css'
-import { ExpandableCell } from 'react-expandable-table-cell'
+import ExpandableCell from 'react-expandable-table-cell'
 import 'react-expandable-table-cell/dist/index.css'
 
 const columns = [
@@ -112,13 +112,20 @@ const myData = [
 
 const Table = () => {
   const [data, setData] = React.useState(myData)
-  const updateMyData = (columnId, rowId, value) => {
+  const onChange = (args) => {
+    // this is optional, expandable table cell internally updates the value when value change
+  }
+
+  const onBlur = (args) => {
+    const { columnId, rowId, value } = args
     console.log(columnId, rowId, value)
+    // api call...
     setData((prevState) => {
       return prevState.map((row) =>
         row.id === rowId ? { ...row, [columnId]: value } : { ...row }
       )
     })
+    // onblur
   }
 
   return (
@@ -145,7 +152,9 @@ const Table = () => {
                         rowId={row.id}
                         columnId={column.id}
                         initialValue={initialValue}
-                        updateMyData={updateMyData}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        editOnOneClick={false}
                       />
                     </React.Fragment>
                   )
@@ -155,38 +164,6 @@ const Table = () => {
           </tbody>
         </table>
       </span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
-      <span>ddddddddddd</span>
     </div>
   )
 }

@@ -3,7 +3,7 @@
   word-break: break-all;
 }
 
-.expandable-label {
+.expandable-cell {
   align-items: stretch;
   display: inline-grid;
   position: relative;
@@ -11,7 +11,7 @@
   -webkit-align-items: stretch;
   -moz-box-align: stretch;
 }
-.expandable-label--focus {
+.expandable-cell--focus {
   margin: 0;
   padding: 0;
   border: 0;
@@ -34,7 +34,7 @@
   border: 2px solid #1d63d4;
 }
 
-.expandable-label--edit {
+.expandable-cell--edit {
   margin: 0;
   padding: 0;
   border: 0;
@@ -58,7 +58,7 @@
   border: 2px solid #1d63d4;
 }
 
-.expandable-label--edit::after {
+.expandable-cell--edit::after {
   margin: 0;
   padding: 0;
   border: 0;
@@ -110,11 +110,6 @@
   border: none;
 }
 
-.textarea:focus {
-  border: 0;
-  outline: 0;
-}
-
 .textarea--selected {
   margin: 0;
   padding: 0;
@@ -136,4 +131,14 @@
   -moz-appearance: none;
   appearance: none;
   border: none;
+}
+
+.textarea--selected:focus {
+  border: 0;
+  outline: 0;
+}
+
+.textarea:focus {
+  border: 0;
+  outline: 0;
 }

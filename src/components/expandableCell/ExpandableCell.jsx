@@ -4,8 +4,10 @@ import styles from './expandable_cell.module.css'
 const ExpandableCellComponent = ({
   initialValue,
   rowId,
-  updateMyData,
-  columnId
+  onBlur,
+  onChange,
+  columnId,
+  editOnOneClick
 }) => {
   const [value, setValue] = React.useState(initialValue)
   const [mode, setMode] = React.useState(null)
@@ -14,10 +16,8 @@ const ExpandableCellComponent = ({
 
   React.useEffect(() => {
     window.onscroll = () => {
-      console.log('caelled')
       const x = tdRef.current.getBoundingClientRect().x
       const y = tdRef.current.getBoundingClientRect().y
-      console.log('x , y', x, y)
       setStyle((prev) => ({
         ...prev,
         left: x - 1,
@@ -26,23 +26,25 @@ const ExpandableCellComponent = ({
     }
   }, [styleState])
 
-  const onBlur = () => {
+  const _onBlur = () => {
     setMode(null)
     setStyle({})
-    updateMyData(columnId, rowId, value)
+    if (onBlur) onBlur({ columnId, rowId, value })
   }
 
-  React.useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
-
-  const onChange = (e) => {
+  const _onChange = (e) => {
     const { value } = e.target
     e.target.parentNode.dataset.value = value
     setValue(value)
+    if (onChange) onChange({ columnId, rowId, value })
   }
 
   const onFocus = () => {
+    if (editOnOneClick) setEditMode()
+    else setFocusMode()
+  }
+
+  const setFocusMode = () => {
     setMode('focus')
     const width = tdRef.current.getBoundingClientRect().width
     const height = tdRef.current.getBoundingClientRect().height
@@ -58,6 +60,10 @@ const ExpandableCellComponent = ({
   }
 
   const onDoubleClick = () => {
+    if (editOnOneClick) return
+    setEditMode()
+  }
+  const setEditMode = () => {
     setMode('edit')
     const x = tdRef.current.getBoundingClientRect().x
     const y = tdRef.current.getBoundingClientRect().y
@@ -67,6 +73,7 @@ const ExpandableCellComponent = ({
       top: y - 1
     })
   }
+
   const tdRef = React.useRef(null)
   return (
     <td role='cell' className={styles.global} ref={tdRef}>
@@ -74,10 +81,10 @@ const ExpandableCellComponent = ({
         data-value={mode === 'edit' ? value : ''}
         className={
           mode === 'focus'
-            ? styles['expandable-label--focus']
+            ? styles['expandable-cell--focus']
             : mode === 'edit'
-            ? styles['expandable-label--edit']
-            : styles['expandable-label']
+            ? styles['expandable-cell--edit']
+            : styles['expandable-cell']
         }
         style={styleState}
       >
@@ -92,14 +99,20 @@ const ExpandableCellComponent = ({
               ? styles['textarea--selected']
               : mode === 'edit'
               ? styles['textarea--selected']
-              : styles['textarea']
+              : styles.textarea
           }
-          onChange={onChange}
-          onBlur={onBlur}
+          onChange={_onChange}
+          // onBlur={_onBlur}
         />
       </label>
     </td>
   )
+}
+
+ExpandableCellComponent.defaultProps = {
+  onBlur: undefined,
+  onChange: undefined,
+  editOnOneClick: false
 }
 
 export default ExpandableCellComponent
