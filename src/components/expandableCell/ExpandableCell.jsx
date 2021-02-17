@@ -50,10 +50,11 @@ const ExpandableCellComponent = ({
     const height = tdRef.current.getBoundingClientRect().height
     const x = tdRef.current.getBoundingClientRect().x
     const y = tdRef.current.getBoundingClientRect().y
+    console.log(tdRef.current.getBoundingClientRect())
 
     setStyle({
-      left: x - 1,
-      top: y - 1,
+      left: x,
+      top: y,
       width: width + 1,
       height: height + 1
     })
@@ -69,8 +70,8 @@ const ExpandableCellComponent = ({
     const y = tdRef.current.getBoundingClientRect().y
 
     setStyle({
-      left: x - 1,
-      top: y - 1
+      left: x,
+      top: y
     })
   }
 
@@ -102,7 +103,7 @@ const ExpandableCellComponent = ({
               : styles.textarea
           }
           onChange={_onChange}
-          // onBlur={_onBlur}
+          onBlur={_onBlur}
         />
       </label>
     </td>
