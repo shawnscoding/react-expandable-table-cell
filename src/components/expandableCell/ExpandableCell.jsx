@@ -1,5 +1,24 @@
 import React from 'react'
 import styles from './expandable_cell.module.css'
+import PropTypes from 'prop-types'
+
+const detectValueType = (value, type, columnId) => {
+  if (type === 'number' && typeof value === 'number') return { val: value }
+  if (type === 'number' && typeof value !== 'number') {
+    console.error(
+      `Wrong value type. initialValue should be ${type} in column id: ${columnId}`
+    )
+    return { val: '', error: true }
+  }
+  if (typeof value === 'string') return { val: value }
+  if (typeof value !== 'string') {
+    console.error(
+      `Wrong value type. initialValue should be text in column id: ${columnId}`
+    )
+    return { val: '', error: true }
+  }
+  return { val: '', error: true }
+}
 
 const ExpandableCellComponent = ({
   initialValue,
@@ -9,12 +28,24 @@ const ExpandableCellComponent = ({
   columnId,
   editOnOneClick,
   maxWidth,
-  maxHeight
+  maxHeight,
+  type
 }) => {
-  const [value, setValue] = React.useState(initialValue)
+  const [disabled, setDisabled] = React.useState(false)
+  const { val, error } = detectValueType(
+    initialValue,
+    type,
+    columnId,
+    setDisabled
+  )
+  const [value, setValue] = React.useState(val)
   const [mode, setMode] = React.useState('default')
 
   const [styleState, setStyle] = React.useState({})
+
+  React.useEffect(() => {
+    if (error) setDisabled(true)
+  }, [error])
 
   React.useEffect(() => {
     window.onscroll = () => {
@@ -28,17 +59,21 @@ const ExpandableCellComponent = ({
     }
   }, [styleState])
 
+  const _resetValue = () => {
+    setValue(val)
+  }
+
   const _onBlur = () => {
     setMode(null)
     setStyle({})
-    if (onBlur) onBlur({ columnId, rowId, value })
+    if (onBlur) onBlur({ columnId, rowId, value, resetValue: _resetValue })
   }
 
   const _onChange = (e) => {
     const { value } = e.target
     e.target.parentNode.dataset.value = value
     setValue(value)
-    if (onChange) onChange({ columnId, rowId, value })
+    if (onChange) onChange({ columnId, rowId, value, resetValue: _resetValue })
   }
 
   const onFocus = () => {
@@ -52,7 +87,6 @@ const ExpandableCellComponent = ({
     const height = tdRef.current.getBoundingClientRect().height
     const x = tdRef.current.getBoundingClientRect().x
     const y = tdRef.current.getBoundingClientRect().y
-    console.log(tdRef.current.getBoundingClientRect())
 
     setStyle({
       left: x,
@@ -99,10 +133,9 @@ const ExpandableCellComponent = ({
         >
           <textarea
             style={maxHeight !== undefined ? { maxHeight: maxHeight } : {}}
-            type=''
-            onDoubleClick={onDoubleClick}
+            onDoubleClick={!disabled ? onDoubleClick : () => {}}
             readOnly={mode !== 'edit'}
-            onFocus={onFocus}
+            onFocus={!disabled ? onFocus : () => {}}
             value={value}
             className={
               mode === 'focus'
@@ -111,8 +144,8 @@ const ExpandableCellComponent = ({
                 ? styles['textarea--edit']
                 : styles.textarea
             }
-            onChange={_onChange}
-            onBlur={_onBlur}
+            onChange={!disabled ? _onChange : () => {}}
+            onBlur={!disabled ? _onBlur : () => {}}
           />
         </label>
       )}
@@ -125,7 +158,19 @@ ExpandableCellComponent.defaultProps = {
   onChange: undefined,
   editOnOneClick: false,
   maxWidth: null,
-  maxHeight: null
+  maxHeight: null,
+  type: 'text'
+}
+
+ExpandableCellComponent.propTypes = {
+  initialValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  rowId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  columnId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  type: PropTypes.oneOf(['text', 'number']).isRequired,
+  editOnOneClick: PropTypes.bool
 }
 
 export default ExpandableCellComponent

@@ -8,7 +8,8 @@ const ExpandableCell = ({
   onBlur,
   columnId,
   editOnOneClick,
-  stylesOnEdit
+  stylesOnEdit,
+  type
 }) => {
   const { maxHeight, maxWidth } = stylesOnEdit
   return (
@@ -21,6 +22,7 @@ const ExpandableCell = ({
       editOnOneClick={editOnOneClick}
       maxWidth={maxWidth}
       maxHeight={maxHeight}
+      type={type}
     />
   )
 }
