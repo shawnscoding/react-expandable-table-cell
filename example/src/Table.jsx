@@ -193,15 +193,15 @@ const Table = () => {
                   <React.Fragment key={column.accessor}>
                     {/* key shouldn't be props to ExpandableCell Component  */}
                     <ExpandableCell
-                      onChange={onChange}
                       rowId={row.id}
                       columnId={column.accessor}
                       initialValue={initialValue}
                       onBlur={onBlur}
-                      readOnly={column.readOnly}
+                      onChange={onChange}
                       stylesOnEdit={{ maxWidth: 400 }}
-                      editOnOneClick={false}
+                      expandOnOneClick={true}
                       type={column.type}
+                      readOnly={column.readOnly}
                     />
                   </React.Fragment>
                 )
