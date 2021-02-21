@@ -9,7 +9,8 @@ const ExpandableCell = ({
   columnId,
   editOnOneClick,
   stylesOnEdit,
-  type
+  type,
+  readOnly
 }) => {
   const { maxHeight, maxWidth } = stylesOnEdit
   return (
@@ -23,6 +24,7 @@ const ExpandableCell = ({
       maxWidth={maxWidth}
       maxHeight={maxHeight}
       type={type}
+      readOnly={readOnly}
     />
   )
 }

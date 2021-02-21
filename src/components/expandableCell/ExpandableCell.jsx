@@ -26,18 +26,15 @@ const ExpandableCellComponent = ({
   onBlur,
   onChange,
   columnId,
-  editOnOneClick,
   maxWidth,
   maxHeight,
-  type
+  // can be seperated to other component
+  editOnOneClick,
+  type,
+  readOnly
 }) => {
-  const [disabled, setDisabled] = React.useState(false)
-  const { val, error } = detectValueType(
-    initialValue,
-    type,
-    columnId,
-    setDisabled
-  )
+  const [disabled, setDisabled] = React.useState(readOnly)
+  const { val, error } = detectValueType(initialValue, type, columnId)
   const [value, setValue] = React.useState(val)
   const [mode, setMode] = React.useState('default')
 
@@ -69,11 +66,28 @@ const ExpandableCellComponent = ({
     if (onBlur) onBlur({ columnId, rowId, value, resetValue: _resetValue })
   }
 
-  const _onChange = (e) => {
+  const _onChange = async (e) => {
     const { value } = e.target
-    e.target.parentNode.dataset.value = value
-    setValue(value)
-    if (onChange) onChange({ columnId, rowId, value, resetValue: _resetValue })
+    if (type === 'number') {
+      const num = Number(value)
+      const isNum = isNaN(num)
+      // console.log('isNum', isNum)
+      // console.log('typeof ', typeof num)
+      // console.log('value ', num)
+      if (!isNum) {
+        e.target.parentNode.dataset.value = num
+        setValue(num)
+        if (onChange) {
+          await onChange({ columnId, rowId, value, resetValue: _resetValue })
+        }
+      }
+    } else {
+      e.target.parentNode.dataset.value = value
+      setValue(value)
+      if (onChange) {
+        await onChange({ columnId, rowId, value, resetValue: _resetValue })
+      }
+    }
   }
 
   const onFocus = () => {
@@ -159,7 +173,8 @@ ExpandableCellComponent.defaultProps = {
   editOnOneClick: false,
   maxWidth: null,
   maxHeight: null,
-  type: 'text'
+  type: 'text',
+  readOnly: false
 }
 
 ExpandableCellComponent.propTypes = {
@@ -170,7 +185,8 @@ ExpandableCellComponent.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   type: PropTypes.oneOf(['text', 'number']).isRequired,
-  editOnOneClick: PropTypes.bool
+  editOnOneClick: PropTypes.bool,
+  readOnly: PropTypes.bool
 }
 
 export default ExpandableCellComponent
