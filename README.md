@@ -16,15 +16,15 @@ npm install react-expandable-table-cell
 
 [Code Sandbox](https://codesandbox.io/s/cell-basic-demo-woqxn?file=/src/Table.jsx)
 
-## Usage of Props `readOnly` Demo
+## Usage of Props 'readOnly' Demo
 
 [Code Sandbox](https://codesandbox.io/s/cell-readonly-demo-e1xvp?file=/src/Table.jsx)
 
-## Usage of Props `type` Demo
+## Usage of Props 'type' Demo
 
 [Code Sandbox](https://codesandbox.io/s/cell-type-demo-jo1dj?file=/src/Table.jsx)
 
-## Usage of Props `expandOnOneClick` Demo
+## Usage of Props 'expandOnOneClick' Demo
 
 [Code Sandbox](https://codesandbox.io/s/cell-expandononeclick-demo-6t06u?file=/src/Table.jsx)
 
