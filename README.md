@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/react-expandable-table-cell.svg)](https://www.npmjs.com/package/react-expandable-table-cell) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-![Expandable Cell Demo](https://raw.githubusercontent.com/shawnscoding/react-expandable-table-cell/HEAD/assets/demo_2.gif)
+![Expandable Cell Demo](https://github.com/shawnscoding/react-expandable-table-cell/blob/master/asssets/demo_2.gif)
 
 ## Install
 
