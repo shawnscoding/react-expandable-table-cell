@@ -169,7 +169,6 @@ const Table = () => {
         row.id === rowId ? { ...row, [columnId]: value } : { ...row }
       )
     })
-    // onblur
   }, [])
 
   return (
@@ -198,8 +197,7 @@ const Table = () => {
                       initialValue={initialValue}
                       onBlur={onBlur}
                       onChange={onChange}
-                      // maxWidth={400}
-                      // maxHeight={100}
+                      maxWidth={400}
                       type={column.type}
                       readOnly={column.readOnly}
                     />
