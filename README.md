@@ -69,7 +69,7 @@ We use [browserslist](https://github.com/browserslist/browserslist) config to st
 
 ## Note
 
-- feel free to open issue. [React-expandable-table-cell Github repo](https://github.com/shawnscoding/react-expandable-table-cell). Any idea that might improve the quality of this package or any kind of bug report will be highly appreciated.
+- Feel free to open issue. [React-expandable-table-cell Github repo](https://github.com/shawnscoding/react-expandable-table-cell). Any idea that might improve the quality of this package or any kind of bug report will be highly appreciated.
 - We'll highly appreciate it if you promote this package to other devs in any way. We believe the appropriate usage of this package will save loads of time.
 
 ## License
