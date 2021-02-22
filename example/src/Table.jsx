@@ -150,11 +150,12 @@ const myData = [
 
 const Table = () => {
   const [data, setData] = React.useState(myData)
-  const onChange = (args) => {
-    // this is optional, expandable table cell internally updates the value when value change
-  }
+  const onChange = React.useCallback((args) => {
+    // onChange is optional because expandable table cell internally updates the value when value change
+  }, [])
 
-  const onBlur = (args) => {
+  const onBlur = React.useCallback((args) => {
+    // useCallback is optional but highly encouraged as it prevents unnecessary rerender
     const { columnId, rowId, value, resetValue } = args
     console.log(columnId, rowId, value)
     const validationFailed = false
@@ -169,7 +170,7 @@ const Table = () => {
       )
     })
     // onblur
-  }
+  }, [])
 
   return (
     <div className={styles.global}>
@@ -197,8 +198,8 @@ const Table = () => {
                       initialValue={initialValue}
                       onBlur={onBlur}
                       onChange={onChange}
-                      stylesOnEdit={{ maxWidth: 400 }}
-                      // expandOnOneClick={true}
+                      // maxWidth={400}
+                      // maxHeight={100}
                       type={column.type}
                       readOnly={column.readOnly}
                     />

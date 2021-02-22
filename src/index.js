@@ -9,11 +9,11 @@ const ExpandableCell = ({
   onBlur,
   columnId,
   expandOnOneClick,
-  stylesOnEdit,
   type,
-  readOnly
+  readOnly,
+  maxWidth,
+  maxHeight
 }) => {
-  const { maxHeight, maxWidth } = stylesOnEdit
   return (
     <ExpandableCellComponent
       initialValue={initialValue}
@@ -36,7 +36,8 @@ ExpandableCell.defaultProps = {
   expandOnOneClick: false,
   type: 'text',
   readOnly: false,
-  stylesOnEdit: { maxWidth: null, maxHeight: null }
+  maxWidth: null,
+  maxHeight: null
 }
 
 ExpandableCell.propTypes = {
@@ -50,7 +51,8 @@ ExpandableCell.propTypes = {
   type: PropTypes.oneOf(['text', 'number']).isRequired,
   expandOnOneClick: PropTypes.bool,
   readOnly: PropTypes.bool,
-  stylesOnEdit: PropTypes.object
+  maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
 export default ExpandableCell
