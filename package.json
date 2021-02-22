@@ -17,8 +17,9 @@
     "react expandable textarea",
     "react table",
     "react expandable table cell",
+    "react editable table cell",
     "table expandable cell",
-    "react expandable cell",
+    "react editable cell",
     "react grid cell",
     "react expandable grid cell"
   ],

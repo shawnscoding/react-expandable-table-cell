@@ -115,8 +115,7 @@ const columns = [
   { label: 'Email', accessor: 'email' },
   { label: 'Department', accessor: 'department' },
   { label: 'Job Title', accessor: 'jobTitle' },
-  { label: 'Address', accessor: 'address' },
-  { label: 'Age', accessor: 'age' }
+  { label: 'Address', accessor: 'address' }
 ]
 
 const myData = [
@@ -199,7 +198,7 @@ const Table = () => {
                       onBlur={onBlur}
                       onChange={onChange}
                       stylesOnEdit={{ maxWidth: 400 }}
-                      expandOnOneClick={true}
+                      // expandOnOneClick={true}
                       type={column.type}
                       readOnly={column.readOnly}
                     />

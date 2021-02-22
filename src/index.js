@@ -40,7 +40,8 @@ ExpandableCell.defaultProps = {
 }
 
 ExpandableCell.propTypes = {
-  initialValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  initialValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   rowId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   columnId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,

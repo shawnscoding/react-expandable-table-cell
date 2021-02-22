@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/react-expandable-table-cell.svg)](https://www.npmjs.com/package/react-expandable-table-cell) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+![Expandable Cell Demo](https://raw.githubusercontent.com/shawnscoding/react-expandable-table-cell/HEAD/assets/demo_2.gif)
+
 ## Install
 
 ```bash
@@ -14,17 +16,17 @@ npm install react-expandable-table-cell
 
 [Code Sandbox](https://codesandbox.io/s/cell-basic-demo-woqxn?file=/src/Table.jsx)
 
-## Usage of expandOnOneClick Props Demo
+## Usage of Props `readOnly` Demo
 
-[Code Sandbox](https://codesandbox.io/s/cell-expandononeclick-demo-6t06u?file=/src/Table.jsx)
+[Code Sandbox](https://codesandbox.io/s/cell-readonly-demo-e1xvp?file=/src/Table.jsx)
 
-## Usage of type Props Demo
+## Usage of Props `type` Demo
 
 [Code Sandbox](https://codesandbox.io/s/cell-type-demo-jo1dj?file=/src/Table.jsx)
 
-## Usage of readOnly Props Demo
+## Usage of Props `expandOnOneClick` Demo
 
-[Code Sandbox](https://codesandbox.io/s/cell-readonly-demo-e1xvp?file=/src/Table.jsx)
+[Code Sandbox](https://codesandbox.io/s/cell-expandononeclick-demo-6t06u?file=/src/Table.jsx)
 
 ## Features
 
@@ -33,6 +35,33 @@ npm install react-expandable-table-cell
 - **No extra dependencies** except React
 - **customizing internal css** is very easy. Just edit `react-expandable-table-cell/dist/index.css` file
 - Provide **specific error message** when something is wrong
+
+## API
+
+```jsx
+ExpandableCell.defaultProps = {
+  onBlur: undefined,
+  onChange: undefined,
+  expandOnOneClick: false,
+  type: 'text',
+  readOnly: false,
+  stylesOnEdit: { maxWidth: null, maxHeight: null }
+}
+
+ExpandableCell.propTypes = {
+  initialValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  rowId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  columnId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  type: PropTypes.oneOf(['text', 'number']).isRequired,
+  expandOnOneClick: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  stylesOnEdit: PropTypes.object
+}
+```
 
 ## Supported browsers
 
