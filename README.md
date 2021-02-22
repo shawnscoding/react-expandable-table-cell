@@ -1,129 +1,32 @@
 # react-expandable-table-cell
 
-> Made with create-react-library
+> React table cell that allows you to easily expand and edit cells
 
 [![NPM](https://img.shields.io/npm/v/react-expandable-table-cell.svg)](https://www.npmjs.com/package/react-expandable-table-cell) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-expandable-table-cell
+npm install react-expandable-table-cell
 ```
 
-## Usage
+## Basic Usage Demo
 
-```jsx
-import React from 'react'
-import styles from './styles.module.css'
-import './index.css'
-import ExpandableCell from 'react-expandable-table-cell'
-import 'react-expandable-table-cell/dist/index.css'
+[Code Sandbox](https://codesandbox.io/s/cell-basic-demo-woqxn?file=/src/Table.jsx)
 
-const columns = [
-  { label: 'Name', accessor: 'name' },
-  { label: 'Email', accessor: 'email' },
-  { label: 'Department', accessor: 'department' },
-  { label: 'Job Title', accessor: 'jobTitle' },
-  { label: 'Address', accessor: 'address' },
-  { label: 'Age', accessor: 'age', type: 'number' }
-  // if default type is 'text'
-]
+# 'Expand cell on one click' Demo
 
-const myData = [
-  {
-    name: 'Shawn',
-    email: 'test11@test.com',
-    department: 'Web Developerment',
-    age: 25,
-    jobTitle: 'Full-stack developer',
-    address: 'ABC street, Some City in the USA',
-    id: '1'
-  },
-  {
-    name: 'Josh',
-    email: 'test12@test.com',
-    department: 'Web Developerment',
-    age: 25,
-    jobTitle: 'Front-end developer',
-    address: 'ABC street, Some City in the UK',
-    id: '2'
-  },
-  {
-    name: 'Michelle',
-    email: 'test13@test.com',
-    department: 'Web Developerment',
-    age: 25,
-    jobTitle: 'Back-end developer',
-    address: 'ABC street, Some City in South Korea',
-    id: '3'
-  }
-]
+[Code Sandbox](https://codesandbox.io/s/cell-expandononeclick-demo-6t06u?file=/src/Table.jsx)
 
-const Table = () => {
-  const [data, setData] = React.useState(myData)
-  const onChange = (args) => {
-    // this is optional, expandable table cell internally updates the value when value change
-  }
+## Supported browsers
 
-  const onBlur = (args) => {
-    const { columnId, rowId, value, resetValue } = args
-    console.log(columnId, rowId, value)
-    const validationFailed = false
-    // 1. you can reset to previous value, if your validation fails.
-    if (validationFailed) return resetValue()
+We use [browserslist](https://github.com/browserslist/browserslist) config to state the browser support for this lib, so check it out on [browserslist.dev](https://browserslist.dev/?q=ZGVmYXVsdHM%3D).
 
-    // 2. otherwise, api call...
-    // 3. update state...
-    setData((prevState) => {
-      return prevState.map((row) =>
-        row.id === rowId ? { ...row, [columnId]: value } : { ...row }
-      )
-    })
-    // onblur
-  }
+## Note
 
-  return (
-    <div className={styles.global}>
-      <table role='table'>
-        <thead>
-          <tr role='row'>
-            {columns.map((column) => (
-              <th role='columnheader' key={column.accessor}>
-                {column.label}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row) => (
-            <tr role='row' key={row.id}>
-              {columns.map((column) => {
-                let initialValue = row[column.accessor]
-                return (
-                  <React.Fragment key={column.accessor}>
-                    <ExpandableCell
-                      rowId={row.id}
-                      columnId={column.accessor}
-                      initialValue={initialValue}
-                      onBlur={onBlur}
-                      editOnOneClick={false}
-                      stylesOnEdit={{ maxWidth: 400 }}
-                      type={column.type}
-                    />
-                  </React.Fragment>
-                )
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-export default Table
-```
+- feel free to open issue. [React-expandable-table-cell Github repo](https://github.com/shawnscoding/react-expandable-table-cell). Any idea that might improve the quality of this package or any kind of bug report will be highly appreciated.
+- We'll highly appreciate it if you promote this package to other devs in any way. We believe the appropriate usage of this package will save loads of time.
 
 ## License
 
-MIT © [shawnscoding](https://github.com/shawnscoding)
+MIT © [shawnscoding](https://github.com/shawnscoding/react-expandable-table-cell/blob/master/LICENSE)
