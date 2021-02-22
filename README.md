@@ -14,9 +14,25 @@ npm install react-expandable-table-cell
 
 [Code Sandbox](https://codesandbox.io/s/cell-basic-demo-woqxn?file=/src/Table.jsx)
 
-# 'Expand cell on one click' Demo
+## Usage of expandOnOneClick Props Demo
 
 [Code Sandbox](https://codesandbox.io/s/cell-expandononeclick-demo-6t06u?file=/src/Table.jsx)
+
+## Usage of type Props Demo
+
+[Code Sandbox](https://codesandbox.io/s/cell-type-demo-jo1dj?file=/src/Table.jsx)
+
+## Usage of readOnly Props Demo
+
+[Code Sandbox](https://codesandbox.io/s/cell-readonly-demo-e1xvp?file=/src/Table.jsx)
+
+## Features
+
+- **Supports All modern browsers**
+- **No style library** is used to style the components. **vanilla css** is used.
+- **No extra dependencies** except React
+- **customizing internal css** is very easy. Just edit `react-expandable-table-cell/dist/index.css` file
+- Provide **specific error message** when something is wrong
 
 ## Supported browsers
 
