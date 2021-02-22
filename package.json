@@ -15,13 +15,19 @@
     "react",
     "react expandable input",
     "react expandable textarea",
+    "react expandable",
+    "react expandable table",
+    "react cell",
     "react table",
-    "react expandable table cell",
-    "react editable table cell",
-    "table expandable cell",
+    "react table cell",
+    "table expandable table cell",
+    "react editable table",
     "react editable cell",
+    "react grid",
     "react grid cell",
-    "react expandable grid cell"
+    "react expandable grid cell",
+    "expandable input",
+    "expandable textarea"
   ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",

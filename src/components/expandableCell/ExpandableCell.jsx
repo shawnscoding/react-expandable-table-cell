@@ -67,7 +67,7 @@ const ExpandableCellComponent = ({
   }
 
   const _onChange = async (e) => {
-    console.log('called')
+    // console.log('called')
     const { value } = e.target
     if (type === 'number') {
       const num = Number(value)
