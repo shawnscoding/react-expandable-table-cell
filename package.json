@@ -1,7 +1,7 @@
 {
   "name": "react-expandable-table-cell",
-  "version": "1.1.0",
-  "description": "React table cell that allows you to easily edit cells",
+  "version": "1.1.1",
+  "description": "React table cell that allows you to easily expand and edit cells",
   "author": "shawnscoding",
   "license": "MIT",
   "repository": "https://github.com/shawnscoding/react-expandable-table-cell",

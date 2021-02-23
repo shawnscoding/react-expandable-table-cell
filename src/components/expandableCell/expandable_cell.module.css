@@ -1,6 +1,7 @@
-.global {
+.td {
   box-sizing: border-box;
   word-break: break-all;
+  background-color: white;
 }
 
 .expandable-cell {
@@ -74,7 +75,7 @@
   font: inherit;
   margin: 0;
   resize: none;
-  background: none;
+  background-color: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -101,7 +102,7 @@
   grid-area: 2/1;
   font: inherit;
   resize: none;
-  background: none;
+  background-color: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -126,7 +127,7 @@
   grid-area: 2/1;
   font: inherit;
   resize: none;
-  background: none;
+  background-color: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -156,7 +157,7 @@
   grid-area: 2/1;
   font: inherit;
   resize: none;
-  background: none;
+  background-color: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

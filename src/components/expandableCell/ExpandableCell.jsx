@@ -132,7 +132,7 @@ const ExpandableCellComponent = React.memo(
 
     const tdRef = React.useRef(null)
     return (
-      <td role='cell' className={styles.global} ref={tdRef}>
+      <td role='cell' className={styles.td} ref={tdRef}>
         <label
           data-value={mode === 'edit' ? value : ''}
           className={

@@ -114,8 +114,8 @@ const columns = [
   { label: 'Name', accessor: 'name' },
   { label: 'Email', accessor: 'email' },
   { label: 'Department', accessor: 'department' },
-  { label: 'Job Title', accessor: 'jobTitle' },
-  { label: 'Address', accessor: 'address' }
+  { label: 'Address', accessor: 'address' },
+  { label: 'Job Title', accessor: 'jobTitle' }
 ]
 
 const myData = [
@@ -172,43 +172,62 @@ const Table = () => {
   }, [])
 
   return (
-    <div className={styles.global}>
-      <table role='table'>
-        <thead>
-          <tr role='row'>
-            {columns.map((column) => (
-              <th role='columnheader' key={column.accessor}>
-                {column.label}
-              </th>
+    <>
+      <div className={styles.global}>
+        <table role='table'>
+          <thead>
+            <tr role='row'>
+              {columns.map((column) => (
+                <th role='columnheader' key={column.accessor}>
+                  {column.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row) => (
+              <tr role='row' key={row.id}>
+                {columns.map((column) => {
+                  let initialValue = row[column.accessor]
+                  return (
+                    <React.Fragment key={column.accessor}>
+                      {/* key shouldn't be props to ExpandableCell Component  */}
+                      <ExpandableCell
+                        rowId={row.id}
+                        columnId={column.accessor}
+                        initialValue={initialValue}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        maxWidth={400}
+                        type={column.type}
+                        readOnly={column.readOnly}
+                      />
+                    </React.Fragment>
+                  )
+                })}
+              </tr>
             ))}
+          </tbody>
+        </table>
+      </div>
+      {/* <table>
+        <thead>
+          <tr>
+            <th>ddd</th>
+            <th>ddd</th>
+            <th>ddd</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
-            <tr role='row' key={row.id}>
-              {columns.map((column) => {
-                let initialValue = row[column.accessor]
-                return (
-                  <React.Fragment key={column.accessor}>
-                    {/* key shouldn't be props to ExpandableCell Component  */}
-                    <ExpandableCell
-                      rowId={row.id}
-                      columnId={column.accessor}
-                      initialValue={initialValue}
-                      onBlur={onBlur}
-                      onChange={onChange}
-                      maxWidth={400}
-                      type={column.type}
-                      readOnly={column.readOnly}
-                    />
-                  </React.Fragment>
-                )
-              })}
-            </tr>
-          ))}
+          <tr>
+            <td>ddd</td>
+            <td>ddd</td>
+            <td>ddd</td>
+            <td>ddd</td>
+          </tr>
         </tbody>
-      </table>
-    </div>
+      </table> */}
+    </>
   )
 }
 
