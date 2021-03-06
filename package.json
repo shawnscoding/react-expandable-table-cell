@@ -1,6 +1,6 @@
 {
   "name": "react-expandable-table-cell",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "React table cell that allows you to easily expand and edit cells",
   "author": "shawnscoding",
   "license": "MIT",
@@ -17,16 +17,13 @@
     "react expandable textarea",
     "react expandable",
     "react expandable table",
-    "react cell",
-    "react table",
     "react table cell",
     "table expandable table cell",
     "react editable table",
     "react editable cell",
-    "react grid",
-    "react grid cell",
     "react expandable grid cell",
     "expandable input",
+    "expandable cell",
     "expandable textarea"
   ],
   "scripts": {
